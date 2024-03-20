@@ -1,0 +1,14 @@
+#This is  basic workflow to help you get started with actions
+name: "Newman Tests"
+On: [push, pull_request]
+jobs:
+builds:
+run-on: ubuntu-latest
+container:
+image: postman/newman
+steps:
+-name: checkout
+uses: actions/checkout@v2
+
+-name: Run API Tests
+run: newman run "Restful Booker BVT.postman_collection. json" -e production.postman_environment.json
